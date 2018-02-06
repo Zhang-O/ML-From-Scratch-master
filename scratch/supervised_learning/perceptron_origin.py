@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 """
+感知机的原始形式，未使用numpy，纯 list
 author: zhangyalong
 ref: 李航 统计学习方法, hankers
 """
@@ -44,7 +45,21 @@ class Perceptron:
         return a
 
 
+    def predict(self, x):
+        a = 0
+        for index, w in enumerate(self.W):
+            a += w*x[index]
+        a += self.b
+        if a >= 0:
+            return 1
+        else:
+            return -1
+
+
     def update(self, x, y):
+        """
+        update parameters using stochastic gradient descent
+        """
         for index, w in enumerate(self.W):
             self.W[index] += self.learning_rate * y * x[index]
         self.b += self.learning_rate * y
@@ -60,6 +75,7 @@ class Perceptron:
 model = Perceptron()
 model.fit(tran_data, tran_label)
 # model.print_args()
+print(model.predict([-6, -4]))
 
 
 ###  the following which could be commented is for animation
