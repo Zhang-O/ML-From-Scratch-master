@@ -6,7 +6,6 @@ ref: 李航 统计学习方法, hankers
 """
 
 
-
 import copy
 from matplotlib import pyplot as plt
 from matplotlib import animation
@@ -14,6 +13,9 @@ import numpy as np
 
 tran_data = np.array([[3, 3], [4, 3], [1, 1]], dtype='float32')
 tran_label = np.array([1, 1, -1], dtype='float32')
+
+# tran_data = np.array([[3, 3], [4, 3], [1, 1], [5, 2]], dtype='float32')
+# tran_label = np.array([1, 1, -1, -1], dtype='float32')
 
 class Perceptron:
     def __init__(self, learning_rate=1, iteration=1000):
@@ -38,7 +40,6 @@ class Perceptron:
                     self.history.append([np.diag(self.alpha) @ Y @ X, self.b])  # for plot
         self.W = np.diag(self.alpha) @ Y @ X
 
-
     def predict(self, x):
         return np.sign(self.W @ x + self.b)
 
@@ -46,7 +47,6 @@ class Perceptron:
 model = Perceptron()
 model.fit(tran_data, tran_label)
 # print(model.predict(np.array([0,0])))
-
 
 
 ###  for animation
@@ -100,6 +100,5 @@ def animate(i):
     return line, label
 
 # call the animator.  blit=true means only re-draw the parts that have changed.
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, repeat=True,
-                               blit=True)
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, repeat=True, blit=True)
 plt.show()

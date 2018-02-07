@@ -13,6 +13,8 @@ from matplotlib import animation
 import logging; logging.basicConfig(level=logging.INFO)
 
 
+# tran_data = [[3, 3], [4, 3], [1, 1], [5, 2]]
+# tran_label = [1, 1, -1, -1]
 
 tran_data = [[3, 3], [4, 3], [1, 1]]
 tran_label = [1, 1, -1]
@@ -83,18 +85,18 @@ fig = plt.figure()
 ax = plt.axes(xlim=(0, 2), ylim=(-2, 2))
 line, = ax.plot([], [], 'g', lw=2)
 label = ax.text([], [], '')
-training_set = [[(3, 3), 1], [(4, 3), 1], [(1, 1), -1]]
+
 
 def init():
     line.set_data([], [])
     x, y, x_, y_ = [], [], [], []
-    for p in training_set:
-        if p[1] > 0:
-            x.append(p[0][0])
-            y.append(p[0][1])
+    for index, ele in enumerate(tran_label):
+        if ele > 0:
+            x.append(tran_data[index][0])
+            y.append(tran_data[index][1])
         else:
-            x_.append(p[0][0])
-            y_.append(p[0][1])
+            x_.append(tran_data[index][0])
+            y_.append(tran_data[index][1])
 
     plt.plot(x, y, 'bo', x_, y_, 'rx')
     plt.axis([-6, 6, -6, 6])
