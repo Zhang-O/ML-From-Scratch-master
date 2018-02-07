@@ -129,7 +129,7 @@ def animate(i):
 
     return line, label
 
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, blit=True)
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, blit=True, repeat=False)
 
 plt.show()
 
