@@ -23,7 +23,7 @@ class Perceptron:
         self.b = None
         self.W = None
 
-        self.history = list()
+        self.history = list()  # for plot
 
     def fit(self, X, Y):
         self.alpha = np.zeros(X.shape[0], dtype='float32')
@@ -35,7 +35,7 @@ class Perceptron:
                     self.alpha[row] += self.learning_rate
                     self.b += self.learning_rate * Y[row]
 
-                    self.history.append([np.diag(self.alpha) @ Y @ X, self.b])
+                    self.history.append([np.diag(self.alpha) @ Y @ X, self.b])  # for plot
         self.W = np.diag(self.alpha) @ Y @ X
 
 
@@ -48,6 +48,8 @@ model.fit(tran_data, tran_label)
 # print(model.predict(np.array([0,0])))
 
 
+
+###  for animation
 fig = plt.figure()
 ax = plt.axes(xlim=(0, 2), ylim=(-2, 2))
 
@@ -93,12 +95,11 @@ def animate(i):
     line.set_data([x1, x2], [y1, y2])
     x1 = 0.0
     y1 = -(b + w[0] * x1) / w[1]
-    label.set_text(str(model.history[i][0]) + ' ' + str(b))
+    label.set_text(str(w) + ' ' + str(b))
     label.set_position([x1, y1])
     return line, label
 
 # call the animator.  blit=true means only re-draw the parts that have changed.
 anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, repeat=True,
                                blit=True)
-
 plt.show()
