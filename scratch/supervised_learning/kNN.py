@@ -18,6 +18,11 @@ class node:
 
 
 def median(array):
+    """
+
+    :param array:
+    :return: the median pointer and its index
+    """
     m = int(len(array) / 2)
     return array[m], m
 
