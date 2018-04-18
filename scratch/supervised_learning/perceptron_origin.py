@@ -19,14 +19,15 @@ import logging; logging.basicConfig(level=logging.INFO)
 tran_data = [[3, 3], [4, 3], [1, 1]]
 tran_label = [1, 1, -1]
 
+
 class Perceptron:
+
     def __init__(self):
         self.name = 'perceptron'
         self.W = None
         self.b = None
         self.learning_rate = 1
         self.history = []
-
 
     def fit(self, X, Y):
         self.W = [0 for i in range(len(X[0]))]
@@ -134,4 +135,4 @@ def animate(i):
 anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, blit=True, repeat=False)
 
 plt.show()
-
+print(111)
