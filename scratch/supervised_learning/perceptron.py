@@ -33,7 +33,7 @@ class Perceptron:
 
         for i in range(self.iteration):
             for row in range(X.shape[0]):
-                if (X[row] @ X.T @ (np.diag(self.alpha) @ Y) + self.b) * Y[row]  <= 0:
+                if (X[row] @ X.T @ (np.diag(self.alpha) @ Y) + self.b) * Y[row] <= 0:
                     self.alpha[row] += self.learning_rate
                     self.b += self.learning_rate * Y[row]
 
@@ -98,6 +98,7 @@ def animate(i):
     label.set_text(str(w) + ' ' + str(b))
     label.set_position([x1, y1])
     return line, label
+
 
 # call the animator.  blit=true means only re-draw the parts that have changed.
 anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(model.history), interval=1000, repeat=True, blit=True)
