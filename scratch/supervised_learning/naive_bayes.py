@@ -3,6 +3,7 @@
 naive bayes
 author: zhangyalong
 ref: 李航 统计学习方法, hankers
+bayes estimate 使用的是 拉普拉斯平滑；
 目前是把所有数据统一成str， numpy 貌似不允许不相同的数据在一起，当数值和str在一个数组里面，数值便自动转化为str
 其实还有更快的一种办法，如果训练数据大，提前知道x的每一维度的特征种类数，可以create 一个矩阵，存储所有的P(Xi=aij|Y=ck)，
 不足的用0补全就行，这样有新的分类任务时就直接取值计算后验概率，避免重复计算
