@@ -1,10 +1,6 @@
-#!/usr/bin/env python
 # _*_ coding: utf-8 _*_
-
-
 import cv2
 import numpy as np
-
 
 """
     Non-max Suppression Algorithm
@@ -15,6 +11,8 @@ import numpy as np
 
     @return Rest boxes after nms operation
 """
+
+
 def nms(bounding_boxes, confidence_score, threshold):
     # If no bounding boxes, return empty list
     if len(bounding_boxes) == 0:
